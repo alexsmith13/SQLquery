@@ -1,0 +1,59 @@
+use sakila;
+SELECT * FROM sakila.actor;
+
+SELECT * FROM sakila.actor WHERE first_name='John';
+
+SELECT * FROM sakila.actor WHERE last_name='Neeson';
+
+SELECT * FROM sakila.actor WHERE actor_id%10=0;
+
+SELECT * FROM sakila.actor WHERE actor_id=100;
+
+SELECT * FROM sakila.film WHERE rating='R';
+
+SELECT * FROM sakila.film WHERE rating!='R';
+
+SELECT * FROM sakila.film WHERE special_features LIKE '%Deleted Scenes%';
+
+SELECT DISTINCT last_name FROM sakila.actor;
+
+SELECT actor_id,COUNT(film_id) FROM sakila.film_actor GROUP BY actor_id ORDER BY COUNT(film_id) DESC;
+
+SELECT * FROM sakila.actor WHERE actor_id=107;
+
+SELECT * FROM sakila.film WHERE title = 'Academy Dinosaur';
+
+SELECT * FROM sakila.inventory WHERE film_id = 1;
+
+SELECT AVG(length) FROM sakila.film;
+
+SELECT AVG(length) FROM sakila.film sk
+INNER JOIN sakila.film_category skc on sk.film_id=skc.film_id
+GROUP BY skc.category_id;
+
+SELECT * FROM sakila.film WHERE description LIKE '%robot%'
+
+SELECT * FROM sakila.film ORDER BY length;
+
+SELECT COUNT(film_id) FROM sakila.film WHERE release_year=2010;
+
+SELECT (first_name + ' ' + last_name) as full_name from sakila.staff
+WHERE staff_id=1;
+
+SELECT * FROM sakila.actor WHERE first_name='FRED' and last_name='Costner'
+
+SELECT * FROM sakila.film sf
+INNER JOIN sakila.film_actor sfa on sf.film_id=sfa.film_id
+WHERE actor_id=16;
+
+SELECT * FROM sakila.film WHERE title='BUCKET BROTHERHOOD';
+
+SELECT COUNT(inventory_id) FROM sakila.store ss
+INNER JOIN sakila.inventory si on ss.store_id=si.store_id
+WHERE film_id=103 GROUP BY ss.store_id;
+
+SELECT COUNT( DISTINCT country) FROM sakila.country;
+
+SELECT * FROM sakila.language ORDER BY name ASC
+
+SELECT first_name + last_name as full_name FROM sakila.actor WHERE last_name LIKE '%son%';
